@@ -1,0 +1,14 @@
+main {
+  min-height: 70vh;
+}
+.menu {
+  background-color: rgb(3, 17, 42);
+}
+.cartNum {
+  color: crimson;
+  margin: 2px;
+}
+.addbtn {
+  background-color: crimson;
+  color: crimson;
+}
