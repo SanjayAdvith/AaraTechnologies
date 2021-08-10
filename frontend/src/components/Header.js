@@ -56,6 +56,9 @@ const Header = () => {
                                         <LinkContainer to='userList'>
                                             <NavDropdown.Item>All Users</NavDropdown.Item>
                                         </LinkContainer>
+                                        <LinkContainer to='add'>
+                                            <NavDropdown.Item>Add Product</NavDropdown.Item>
+                                        </LinkContainer>
                                         <NavDropdown.Item onClick={logoutHandler}>
                                             Logout
                                         </NavDropdown.Item>

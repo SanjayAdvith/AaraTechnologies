@@ -10,6 +10,7 @@ import RegisterScreen from "./components/RegisterScreen";
 import ProductListScreen from "./components/ProductListScreen";
 import UserListScreen from "./components/UserListScreen";
 import CartScreen from "./components/CartScreen";
+import AddProduct from "./components/AddProduct";
 function App() {
   return (
     <Router>
@@ -22,6 +23,7 @@ function App() {
           <Route path='/register' component={RegisterScreen} />
           <Route path='/list' component={ProductListScreen} />
           <Route path='/userList' component={UserListScreen} />
+          <Route path='/add' component={AddProduct} />
           <Route path='/cart' component={CartScreen} />
         </main>
       </Container>

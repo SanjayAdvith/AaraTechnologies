@@ -35,14 +35,17 @@ export const deleteProduct = asyncHandler(async (req, res) => {
 // creating product
 export const createProduct = asyncHandler(async (req, res) => {
 
-    const { name, price, image, is_in_stock, title } = req.body
+    const { name, price, image, is_in_stock, category, title } = req.body
 
     const createdProduct = await Product.create({
 
         user: req.user._id,
-        name, price,
-        image, is_in_stock,
-        title
+        name,
+        price,
+        image,
+        title,
+        category,
+        is_in_stock
     })
     if (createdProduct) {
         res.status(201).json({
@@ -50,6 +53,7 @@ export const createProduct = asyncHandler(async (req, res) => {
             name: createdProduct.name,
             user_Id: createdProduct.user,
             price: createdProduct.price,
+            categpry: createdProduct.category,
             title: createdProduct.title
         })
     } else {

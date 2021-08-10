@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Card, Button } from 'react-bootstrap'
 //import { Link } from 'react-router-dom'
 import { addToCart, removeFromCart } from '../actions/cartActions'
 const Product = ({ product, history }) => {
     const dispatch = useDispatch()
 
-    const cart = useSelector((state) => state.cart)
-    const { cartItems } = cart
 
     const [btn, setBtn] = useState(1)
     console.log('history ' + history);
@@ -24,7 +22,7 @@ const Product = ({ product, history }) => {
     return (
         <Card className='my-3 p-3 rounded'>
 
-            <Card.Img src={product.images} variant='top' />
+            <Card.Img src={product.image} variant='top' />
 
             <Card.Body>
                 <Card.Title as='div'>
@@ -42,7 +40,7 @@ const Product = ({ product, history }) => {
                     className='btn btn-danger'
                     onClick={addToCartHandler}
                 >
-                    {btn? 'Add to Cart' : 'Remove'}
+                    {btn ? 'Add to Cart' : 'Remove'}
                 </Button>
             </Card.Body>
 
