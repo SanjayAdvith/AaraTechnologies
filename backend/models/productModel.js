@@ -10,11 +10,9 @@ const productSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-
-    images: {
+    image: {
         type: String,
-        require: true,
-        default: '/images/p2.jpg'
+        require: true
     },
     price: {
         type: Number,
@@ -24,15 +22,10 @@ const productSchema = mongoose.Schema({
         type: String,
         require: true
     },
-    countInStock: {
+    is_in_stock: {
         type: Number,
         require: true,
         default: 0
-    },
-
-    category: {
-        type: String,
-        required: true,
     }
 }, { timestamp: true })
 

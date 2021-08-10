@@ -6,9 +6,32 @@ import {
     Nav,
     Navbar,
     Container, Row,
-    Col, FormControl
+    Col, FormControl, NavDropdown
 } from 'react-bootstrap'
-const header = () => {
+
+import { logout } from '../actions/userActions'
+import { useDispatch, useSelector } from 'react-redux'
+
+
+
+
+
+const Header = () => {
+
+
+
+    const dispatch = useDispatch()
+
+    const userLogin = useSelector((state) => state.userLogin)
+    const { userInfo } = userLogin
+
+    const cart = useSelector((state) => state.cart)
+    const { cartItems } = cart
+
+    const logoutHandler = () => {
+        dispatch(logout())
+    }
+
     return (
         <Row className='menu'>
             <Col>
@@ -24,12 +47,29 @@ const header = () => {
                                 <Button variant="outline-success">Search</Button>
                             </Form>
                             <Nav className="ml-auto">
-                                <Nav.Link href="#features">Login
-                                    <i className='fas fa-user'></i>
-                                </Nav.Link>
-                                <Nav.Link href="#pricing">Cart
+
+                                {userInfo ? (
+                                    <NavDropdown title={userInfo.name} id='username'>
+                                        <LinkContainer to='#'>
+                                            <NavDropdown.Item>Profile</NavDropdown.Item>
+                                        </LinkContainer>
+                                        <LinkContainer to='userList'>
+                                            <NavDropdown.Item>All Users</NavDropdown.Item>
+                                        </LinkContainer>
+                                        <NavDropdown.Item onClick={logoutHandler}>
+                                            Logout
+                                        </NavDropdown.Item>
+                                    </NavDropdown>
+                                ) : (
+                                    <LinkContainer to='/login'>
+                                        <Nav.Link>
+                                            <i className='fas fa-user'></i> Sign In
+                                        </Nav.Link>
+                                    </LinkContainer>
+                                )}
+                                <Nav.Link href="cart">Cart
                                     <i className='fas fa-shopping-cart'></i>
-                                    <span className='cartNum'>2</span>
+                                    <span className='cartNum'>{cartItems.length === 0 ? '' : cartItems.length}</span>
                                 </Nav.Link>
                             </Nav>
                         </Navbar.Collapse>
@@ -40,4 +80,4 @@ const header = () => {
     )
 }
 
-export default header
+export default Header
